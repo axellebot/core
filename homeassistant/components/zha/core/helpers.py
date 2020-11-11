@@ -259,8 +259,13 @@ def convert_install_code(value: str) -> bytes:
 
 
 QR_CODES = (
-    # Consciot
-    r"^([\da-fA-F]{16})\|([\da-fA-F]{36})$",
+    # Consciot | Schneider Electric (Wiser)
+    r"""
+        ^([0-9a-fA-F]{16}) # IEEE address
+        \|
+        ([0-9a-fA-F]{36})  # install code
+        $
+    """,
     # Enbrighten
     r"""
         ^Z:
